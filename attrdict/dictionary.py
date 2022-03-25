@@ -48,6 +48,9 @@ class AttrDict(dict, MutableAttr):
         return six.u('AttrDict({contents})').format(
             contents=super(AttrDict, self).__repr__()
         )
+    
+    def __dir__(self):
+        return list(self.keys()) + super().__dir__()
 
     @classmethod
     def _constructor(cls, mapping, configuration):
